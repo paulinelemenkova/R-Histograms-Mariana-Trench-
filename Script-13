@@ -1,0 +1,19 @@
+MDepths[,13]
+X13<- MDepths[,13]
+X13<-X13[!is.na(X13)]
+as.data.frame(X13)
+X13
+dat13<- data.frame(X13)
+p13<-ggplot(dat13, aes(X13)) +
+  geom_histogram(binwidth = 210,aes(fill=..density..,x=dat13$X13,y = ..density..),color="blue",size=.1) +
+  stat_function(fun = dnorm, args = list(mean = mean(dat13$X13), sd = sd(dat13$X13)), lwd = 0.2, color = 'black') +
+  stat_density(geom = "line", size=.3, aes(color = "density")) +
+	geom_vline(aes(color="mean", xintercept=mean(X13)), lty=4, size=.3) +
+	geom_vline(aes(color="median", xintercept=median(X13)), lty=2, size=.3)  +
+	geom_vline(aes(color="normal_distribution", xintercept=dnorm(X13)), lty=2, size=.3)  +
+	scale_fill_distiller(palette = "BrBG") +
+	scale_color_manual(name = "Statistics:", values = c(median = "yellow", mean = "red", density = "blue", normal_distribution = "black")) +
+	labs(title="Mariana Trench. Depths Distribution Histogram for Profile Nr. 13") +labs(x="Depths, m", y="Density") +
+	scale_y_continuous(labels = scales :: percent)
+
+ggsave("p13.pdf", width = 20, height = 20, units = "cm")
