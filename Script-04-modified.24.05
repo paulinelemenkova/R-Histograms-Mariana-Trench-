@@ -9,9 +9,9 @@ p04<-ggplot(dat04, aes(X04)) +
   theme(
     plot.title = element_text(family="Skia", face=1, size=10),
     plot.subtitle = element_text(family="Verdana", face=3, size=8),
-    axis.text.x = element_text(family="Verdana", face=3, size=6),
-    axis.text.y = element_text(family="Verdana", face=3, size=6),
-    axis.title = element_text(family="Verdana", face=1, size=6),
+    axis.text.x = element_text(family="Arial", face=3, size=6),
+    axis.text.y = element_text(family="Arial", face=3, size=6),
+    axis.title = element_text(family="Times New Roman", face=1, size=6),
     plot.caption = element_text(family="Palatino", face=2, size=10)) +
   geom_histogram(binwidth = 200,aes(fill=..density..,x=dat04$X04,y = ..density..),color="blue",size=.1) +
   stat_function(fun = dnorm, args = list(mean = mean(dat04$X04), sd = sd(dat04$X04)), lwd = 0.2, color = 'black') +
